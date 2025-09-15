@@ -19,4 +19,14 @@ model Prefecture {
   id   String @id @unique
   name String @unique
   area String
+  TripRecords TripRecord[]
+}
+
+
+model TripRecord {
+  id              String     @id @unique
+  visitedDate     DateTime
+  prefectureId    String
+  visitedPrefecture Prefecture @relation(fields: [prefectureId], references: [id])
+  detail          String?
 }
